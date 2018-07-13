@@ -147,6 +147,9 @@ a:visited, a:link{
 .albumpic{
   border-radius: 0%;
 }
+.showline{
+  width: 92%;
+}
 @media only screen and (max-width: 970px) {
   .center{
    order: 1;

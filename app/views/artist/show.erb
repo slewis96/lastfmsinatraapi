@@ -18,20 +18,20 @@
     </h2>
   </div>
 </div>
-<hr>
+<hr class="showline">
 <h2 class="title">Top Albums:</h2>
 <br>
 <div class="albums">
   <%@albums["topalbums"]["album"].first(3).each do |album|%>
     <figure>
-      <a href="<%=album[:url]%>">
+      <a href="<%= album["url"] %>" target="_blank">
         <img class="albumpic" src="<%= album["image"][2]["#text"]%>" alt="">
         <figcaption class="artistname"><%= album["name"] %></figcaption>
       </a>
     </figure>
   <%end%>
 </div>
-<hr>
+<hr class="showline">
 <h2 class="title">Similar:</h2>
 <br>
 <div class="similar">
