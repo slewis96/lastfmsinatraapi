@@ -1,0 +1,47 @@
+<a class="home" href="/">&lt;&lt;Home</a>
+<div class="artist">
+  <div class="center">
+    <h1 class="showartistname"><%= @artist["artist"]["name"]%></h1>
+    <img src="<%= @artist["artist"]["image"][4]["#text"]%>" alt="">
+    <% @playcount = @artist["artist"]["stats"]["playcount"].to_s %>
+    <h2 class="showartistinfo">Playcount: <br><%= @playcount.to_s.reverse.gsub(/(\d{3})/,"\\1,").chomp(",").reverse %></h2>
+  </div>
+  <div class="right">
+    <h2 class="showartistsummary" id="summary"><%=@artist["artist"]["bio"]["summary"]%></h2>
+  </div>
+  <div class="left">
+    <h2 class="showartistinfo" id="tags">
+      <%@artist["artist"]["tags"]["tag"].each do |t|%>
+         <%= t["name"].capitalize %>
+         <br>
+      <%end%>
+    </h2>
+  </div>
+</div>
+<hr>
+<h2 class="title">Top Albums:</h2>
+<br>
+<div class="albums">
+  <%@albums["topalbums"]["album"].first(3).each do |album|%>
+    <figure>
+      <a href="<%=album[:url]%>">
+        <img class="albumpic" src="<%= album["image"][2]["#text"]%>" alt="">
+        <figcaption class="artistname"><%= album["name"] %></figcaption>
+      </a>
+    </figure>
+  <%end%>
+</div>
+<hr>
+<h2 class="title">Similar:</h2>
+<br>
+<div class="similar">
+  <%@artist["artist"]["similar"]["artist"].each do |similar|%>
+    <figure>
+      <% @urlname = similar["name"].downcase.gsub(' ','+') %>
+      <a href="/artist/<%= @urlname %>">
+        <img class="artistpic" src="<%= similar["image"][2]["#text"]%>" alt="">
+        <figcaption class="artistname"><%= similar["name"] %></figcaption>
+      </a>
+    </figure>
+  <%end%>
+</div>

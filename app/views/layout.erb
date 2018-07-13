@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Artists API</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body onload="showPage()">
+  <div id="loader">
+    <img src="/images/preloader.gif" alt="">
+  </div>
+  <div></div>
+  <div id="page" style="display:none">
+    <%= yield %>
+  </div>
+  <a href="https://www.last.fm/api"><img class="lastfm" src="/images/lflogo.png"></img></a>
+</body>
+<script>
+
+function showPage() {
+  $.when($('#loader').fadeOut(800))
+                     .done(function() {
+                       document.getElementById("loader").style.display = "none";
+                       $('#page').fadeIn(3000);
+  });
+}
+</script>
+
+</html>
