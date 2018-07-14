@@ -32,7 +32,7 @@ class ArtistController < Sinatra::Base
   get '/artist/:id' do
 
     id = params[:id]
-    
+
     @api_call = ArtistAPI.new
     @artist = @api_call.artist_show_service.get_show_artist(id)
     @albums = @api_call.album_index_service.get_top3_albums(id)

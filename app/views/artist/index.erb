@@ -3,7 +3,7 @@
 </form>
 <h2 class="topartisttitle">Top Artists:</h2>
 <div class="topartistwrapper">
-  <% @artists.get_all_artists["artists"]["artist"].first(10).each do |artist|%>
+  <% @artists.get_all_artists.each do |artist|%>
     <div class="topartist">
       <figure>
         <% @urlname = artist["name"] %>
