@@ -1,15 +1,15 @@
+<a class="home" href="/">&lt;&lt;Home</a>
 <form id="searchform">
   <input id="search" class="indexsearch" type="search" placeholder="Search...">
 </form>
-<h2 class="topartisttitle">Top Artists:</h2>
 <div class="topartistwrapper">
-  <% @artists.get_all_artists["artists"]["artist"].first(10).each do |artist|%>
+  <% @artists.each do |result|%>
     <div class="topartist">
       <figure>
-        <% @urlname = artist["name"] %>
+        <% @urlname = result["name"]%>
         <a href="/artist/<%= @urlname %>">
-          <img class="artistpic" src="<%= artist["image"][2]["#text"] %>" alt="artistpic">
-          <figcaption class="artistname"><%= artist["name"] %></figcaption>
+          <img class="artistpic" src="<%= result["image"][2]["#text"] %>" alt="artistpic">
+          <figcaption class="artistname"><%= result["name"] %></figcaption>
         </a>
       </figure>
     </div>
