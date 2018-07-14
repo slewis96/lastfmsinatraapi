@@ -18,13 +18,3 @@
     <h2 class="showartistinfo">No Artist Found</h2>
   <% end %>
 </div>
-<script>
-  $("#searchform").submit(function(){
-    event.preventDefault();
-    search();
-  })
-  function search(){
-    var query = $("#search").val().toLowerCase().replace(/ /g,"+");
-    window.location.replace("/search/"+query);
-  }
-</script>
