@@ -14,6 +14,7 @@ class ArtistController < Sinatra::Base
 
     @api_call = ArtistAPI.new
     @artists = @api_call.artist_index_service
+    @artists = @artists.get_all_artists
 
     erb :'artist/index'
 
@@ -37,6 +38,14 @@ class ArtistController < Sinatra::Base
     @artist = @api_call.artist_show_service.get_show_artist(id)
     @albums = @api_call.album_index_service.get_top3_albums(id)
     erb :'artist/show'
+
+  end
+  get '/:id' do
+    id = params[:id]
+    @api_call = ArtistAPI.new
+    @artists = @api_call.artist_index_service
+    @artists = @artists.get_tag_top(id)["artist"]
+    erb :'artist/index'
 
   end
 

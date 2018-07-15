@@ -6,12 +6,19 @@ describe ArtistAPI do
     before(:all) do
       @api_call = ArtistAPI.new
       @artists = @api_call.artist_index_service.get_all_artists
+      @artiststag = @api_call.artist_index_service.get_tag_top("rock")
     end
     it "should respond with an array" do
       expect(@artists).to be_a Array
     end
-    it "should be of length 20" do
-      expect(@artists.length).to eq 20
+    it "should be of length 25" do
+      expect(@artists.length).to eq 25
+    end
+    it "should respond with tag array" do
+      expect(@artiststag["artist"]).to be_a Array
+    end
+    it "should respond with artists with tag of rock" do
+      expect(@artiststag["@attr"]["tag"]).to eq "rock"
     end
   end
 

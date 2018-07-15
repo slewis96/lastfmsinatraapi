@@ -2,8 +2,24 @@
   <input id="search" class="indexsearch" type="search" placeholder="Search...">
 </form>
 <h2 class="topartisttitle">Top Artists:</h2>
+<div class="dropdown">
+  <button class="dropbtn">&#x25BF;</button>
+    <div class="dropdown-content">
+      <a href="/">All</a>
+      <a href="/rock">Rock</a>
+      <a href="/alternative">Alternative</a>
+      <a href="/metal">Metal</a>
+      <a href="/jazz">Jazz</a>
+      <a href="/folk">Folk</a>
+      <a href="/blues">Blues</a>
+      <a href="/punk">Punk</a>
+      <a href="/60s">60s</a>
+      <a href="/70s">70s</a>
+      <a href="/psychedelic">Psychedelic</a>
+    </div>
+</div>
 <div class="topartistwrapper">
-  <% @artists.get_all_artists.each do |artist|%>
+  <% @artists.each do |artist|%>
     <div class="topartist">
       <figure>
         <% @urlname = artist["name"] %>
@@ -15,3 +31,12 @@
     </div>
   <% end %>
 </div>
+<script>
+  $( document ).ready(function() {
+    var tag = document.URL.split('/').pop();
+    if(tag == ""){
+      tag = "All";
+    }
+    $(".dropbtn").html(tag.charAt(0).toUpperCase() + tag.slice(1) + " &#9663;");
+  });
+</script>
